@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// ======================== Structuri ========================
+
 typedef struct Nod {
     int id_restaurant; // ID-ul restaurantului
     struct Nod *urmator; // Legătura către următorul nod
@@ -17,6 +19,9 @@ typedef struct Stiva {
     int capacitate; // Capacitatea maximă a stivei
     int *elemente; // Elementele stocate în stivă
 } STIVA;
+
+
+// ======================== Funcții utilitare ========================
 
 NOD *creaza_nod(int id_restaurant) {
     NOD *nod_nou = malloc(sizeof(NOD));
@@ -64,6 +69,9 @@ void push(int id_restaurant, STIVA *stiva) {
     stiva->elemente[stiva->varf] = id_restaurant;
 }
 
+
+// ======================== DFS ========================
+
 void parcurge_DFS(GRAF *graf, STIVA *stiva, int id_restaurant) {
     NOD *lista = graf->lista_adiacenta[id_restaurant];
     NOD *temp = lista;
@@ -109,6 +117,9 @@ int exista_drum(GRAF *graf, int numar_restaurante, int start, int sfarsit) {
 
     return rezultat;
 }
+
+
+// ======================== Main ========================
 
 int main() {
     int numar_restaurante, numar_drumuri;
